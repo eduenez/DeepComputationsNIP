@@ -1,0 +1,163 @@
+\documentclass{beamer}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+%----------------------------------------------------------------------------------------
+%	UTSA THEME CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+% Define official UTSA Colors
+% Source: UTSA Brand Identity Guide
+\definecolor{utsaOrange}{HTML}{F15A22} % PMS 1665
+\definecolor{utsaNavy}{HTML}{0C2340}   % PMS 289
+\definecolor{utsaBlue}{HTML}{002A5C}   % Alternate/Dark Blue
+
+% Use a clean base theme
+\usetheme{Madrid}
+
+% Custom Color Palette
+\setbeamercolor{structure}{fg=utsaOrange}
+\setbeamercolor{title}{bg=utsaNavy, fg=white}
+\setbeamercolor{frametitle}{bg=utsaNavy, fg=white}
+\setbeamercolor{section in head/foot}{bg=utsaOrange, fg=white}
+\setbeamercolor{author in head/foot}{bg=utsaNavy, fg=white}
+\setbeamercolor{date in head/foot}{bg=utsaNavy, fg=white}
+\setbeamercolor{block title}{bg=utsaOrange, fg=white}
+\setbeamercolor{block body}{bg=utsaOrange!10, fg=black}
+
+% Add the UTSA logo to the header or footer (optional)
+% \logo{\includegraphics[height=1cm]{utsa_logo.png}} % Uncomment if you have a logo file
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE INFO
+%----------------------------------------------------------------------------------------
+
+\title[Short Title for Footer]{Complexity of Deep Computations via Topology}
+\subtitle{A Model-Theoretic Approach to Neural Limits}
+\author[Author Name]{Your Name Here}
+\institute[UTSA]{
+    Department of Mathematics\\
+    The University of Texas at San Antonio\\
+    \medskip
+    \textit{email@utsa.edu}
+}
+\date{\today}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+% Title Slide
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Outline Slide
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+%------------------------------------------------
+\section{Introduction}
+%------------------------------------------------
+
+\begin{frame}{Introduction}
+    \begin{itemize}
+        \item Motivation: Understanding the limits of deep learning models.
+        \item Neural Networks as iterated functions.
+        \item What happens when depth $\to \infty$?
+        \item Key Question: \textbf{How complex are the limit functions?}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Key Concepts}
+    \begin{block}{Deep Computations}
+        Limits of iterative processes, modeled through the lens of function space topology.
+    \end{block}
+    
+    \begin{exampleblock}{Example: Newton's Method}
+        Iterating a rational map $z \mapsto z - p(z)/p'(z)$ can lead to complex fractal behavior (Julia sets) or simple convergence basins.
+    \end{exampleblock}
+\end{frame}
+
+%------------------------------------------------
+\section{Topological Framework}
+%------------------------------------------------
+
+\begin{frame}{Rosenthal Compacta}
+    \begin{itemize}
+        \item We use \textbf{Rosenthal Compacta} to classify these limit spaces.
+        \item Definition: Compact subsets of the first Baire class $B_1(X)$.
+        \item Connection to Model Theory:
+        \begin{itemize}
+            \item \textbf{NIP} (No Independence Property) $\leftrightarrow$ Tame topology.
+            \item \textbf{IP} (Independence Property) $\leftrightarrow$ Wild/Chaotic topology.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Todorčević’s Trichotomy}
+    A classification of dynamical complexity:
+    \begin{enumerate}
+        \item \textbf{Metrizable}: The simplest tame case.
+        \item \textbf{Hereditarily Separable}: Non-metrizable but manageable.
+        \item \textbf{First Countable}: More complex.
+        \item \textbf{General Rosenthal Compacta}: The "wilder" tame class.
+    \end{enumerate}
+\end{frame}
+
+%------------------------------------------------
+\section{Results}
+%------------------------------------------------
+
+\begin{frame}{Main Theorem}
+    \begin{theorem}
+        Let $\Delta$ be a set of computations. The space of deep computations $\overline{\Delta}$ is a Rosenthal compactum if and only if $\Delta$ satisfies the NIP.
+    \end{theorem}
+    
+    \vspace{0.5cm}
+    
+    \textbf{Implications:}
+    \begin{itemize}
+        \item We can predict the learnability of a model based on its topological class.
+        \item Provides a "Rosetta Stone" connecting Topology, Logic, and Machine Learning.
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\section{Conclusion}
+%------------------------------------------------
+
+\begin{frame}{Summary \& Future Work}
+    \textbf{Summary:}
+    \begin{itemize}
+        \item Established a correspondence between NIP and Rosenthal Compacta in Deep Learning.
+        \item Classified limits of neural networks into 4 complexity classes.
+    \end{itemize}
+    
+    \vspace{0.5cm}
+    
+    \textbf{Future Directions:}
+    \begin{itemize}
+        \item Exploring randomized versions of NIP.
+        \item Application to specific architectures (Transformers, RNNs).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Q\&A}
+    \centering
+    \Large \textbf{Thank You!}
+    
+    \vspace{1cm}
+    \footnotesize
+    \textit{The University of Texas at San Antonio}
+\end{frame}
+
+\end{document}
