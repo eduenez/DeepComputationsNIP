@@ -6,13 +6,14 @@
 \usepackage{booktabs}
 \usepackage{tikz}
 \usepackage{hyperref}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
 
 %----------------------------------------------------------------------------------------
-%	UTSA THEME CONFIGURATION
+%	UTSA THEME CONFIGURATION (Preserving from template)
 %----------------------------------------------------------------------------------------
 
 % Define official UTSA Colors
-% Source: UTSA Brand Identity Guide
 \definecolor{utsaOrange}{HTML}{F15A22} % PMS 1665
 \definecolor{utsaNavy}{HTML}{0C2340}   % PMS 289
 \definecolor{utsaBlue}{HTML}{002A5C}   % Alternate/Dark Blue
@@ -30,21 +31,15 @@
 \setbeamercolor{block title}{bg=utsaOrange, fg=white}
 \setbeamercolor{block body}{bg=utsaOrange!10, fg=black}
 
-% Add the UTSA logo to the header or footer (optional)
-% \logo{\includegraphics[height=1cm]{utsa_logo.png}} % Uncomment if you have a logo file
-
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE INFO
 %----------------------------------------------------------------------------------------
 
-\title[Short Title for Footer]{Complexity of Deep Computations via Topology}
-\subtitle{A Model-Theoretic Approach to Neural Limits}
-\author[Author Name]{Your Name Here}
-\institute[UTSA]{
+\title[Complexity via Topology]{Complexity of Deep Computations\\ via Topology of Function Spaces}
+\author[Dueñez et al.]{E. Dueñez, J. Iovino, T. Matos-Wiederhold, L. Salvetti, F. D. Tall}
+\institute[UTSA \& UofT]{
     Department of Mathematics\\
-    The University of Texas at San Antonio\\
-    \medskip
-    \textit{email@utsa.edu}
+    University of Texas at San Antonio \& University of Toronto
 }
 \date{\today}
 
@@ -65,99 +60,214 @@
 \end{frame}
 
 %------------------------------------------------
-\section{Introduction}
+\section{Context: Deep Computations}
 %------------------------------------------------
 
-\begin{frame}{Introduction}
+\begin{frame}{Deep Computations}
     \begin{itemize}
-        \item Motivation: Understanding the limits of deep learning models.
-        \item Neural Networks as iterated functions.
-        \item What happens when depth $\to \infty$?
-        \item Key Question: \textbf{How complex are the limit functions?}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Key Concepts}
-    \begin{block}{Deep Computations}
-        Limits of iterative processes, modeled through the lens of function space topology.
-    \end{block}
-    
-    \begin{exampleblock}{Example: Newton's Method}
-        Iterating a rational map $z \mapsto z - p(z)/p'(z)$ can lead to complex fractal behavior (Julia sets) or simple convergence basins.
-    \end{exampleblock}
-\end{frame}
-
-%------------------------------------------------
-\section{Topological Framework}
-%------------------------------------------------
-
-\begin{frame}{Rosenthal Compacta}
-    \begin{itemize}
-        \item We use \textbf{Rosenthal Compacta} to classify these limit spaces.
-        \item Definition: Compact subsets of the first Baire class $B_1(X)$.
-        \item Connection to Model Theory:
+        \item We study the asymptotic behavior of computations as parameters tend to a limit (e.g., depth $\to \infty$).
+        \item \textbf{Deep Computations}: Limits of standard computations.
+        \item \textbf{Compositional Computation Structure (CCS)}: $(L, \mathcal{P}, \Gamma)$
         \begin{itemize}
-            \item \textbf{NIP} (No Independence Property) $\leftrightarrow$ Tame topology.
-            \item \textbf{IP} (Independence Property) $\leftrightarrow$ Wild/Chaotic topology.
+            \item $L$: State space (e.g., $\mathbb{R}^n$, $\hat{\mathbb{C}}$, $2^{\mathbb{N}}$).
+            \item $\mathcal{P}$: Predicates (observable features).
+            \item $\Gamma$: Semigroup of transitions (computations).
         \end{itemize}
+        \item \textbf{Space of Types}: $\mathcal{L} \subseteq \mathbb{R}^{\mathcal{P}}$ (Pointwise closure of realized types).
+        \item \textbf{Deep Computations}: $\overline{\Gamma} \subseteq \mathcal{L}^L$ (Pointwise closure of $\Gamma$).
     \end{itemize}
-\end{frame}
-
-\begin{frame}{Todorčević’s Trichotomy}
-    A classification of dynamical complexity:
-    \begin{enumerate}
-        \item \textbf{Metrizable}: The simplest tame case.
-        \item \textbf{Hereditarily Separable}: Non-metrizable but manageable.
-        \item \textbf{First Countable}: More complex.
-        \item \textbf{General Rosenthal Compacta}: The "wilder" tame class.
-    \end{enumerate}
+    \begin{alertblock}{Main Goal}
+        Classify the complexity of these limit computations using topology and model theory.
+    \end{alertblock}
 \end{frame}
 
 %------------------------------------------------
-\section{Results}
+\section{Newton's Method as a CCS}
 %------------------------------------------------
 
-\begin{frame}{Main Theorem}
-    \begin{theorem}
-        Let $\Delta$ be a set of computations. The space of deep computations $\overline{\Delta}$ is a Rosenthal compactum if and only if $\Delta$ satisfies the NIP.
-    \end{theorem}
+\begin{frame}{Newton's Method as a CCS}
+    Newton-Raphson root finding for a rational map $p(z)$ on the Riemann sphere $\hat{\mathbb{C}}$.
+    
+    \begin{itemize}
+        \item \textbf{States}: $L = \hat{\mathbb{C}}$ (Extended complex plane).
+        \item \textbf{Predicates}: $\mathcal{P} = (P_1, P_2, P_3)$ from inverse stereographic projection ($S^2 \to \hat{\mathbb{C}}$).
+        \item \textbf{Computation}: Iterates of the Newton map
+        \[
+            N_p(z) = z - \frac{p(z)}{p'(z)}
+        \]
+        \item $\Gamma_p = \{ N_p^{(n)} : n \in \mathbb{N} \}$.
+    \end{itemize}
     
     \vspace{0.5cm}
-    
-    \textbf{Implications:}
+    Successive steps $z_{n+1} = N_p(z_n)$ hopefully converge to a root of $p(z)$.
+\end{frame}
+
+\begin{frame}{Example: Cubic Polynomial}
+    Consider $\rho(z) = z^3 - 2z + 2$.
     \begin{itemize}
-        \item We can predict the learnability of a model based on its topological class.
-        \item Provides a "Rosetta Stone" connecting Topology, Logic, and Machine Learning.
+        \item Newton map: $N_\rho(z) = \frac{2z^3 - 2}{3z^2 - 2}$.
+        \item From $z_0 = 0$: Sequence is $0, 1, 0, 1, \dots$ (Divergent 2-cycle).
+        \item Roots $r_0, r_{\pm 1}$.
     \end{itemize}
+
+    \begin{block}{Deep Computations of $N_\rho$}
+        The set of deep computations $\overline{\Gamma_\rho}$ contains:
+        \begin{itemize}
+            \item The constant maps to roots on their basins of attraction.
+            \item Two limit maps $f_0, f_1$ on the basin of the $\{0,1\}$ cycle.
+            \item Chaotic behavior on the Julia set (Newton fractal).
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Visualizing Newton Dynamics}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.3\textwidth]{../images/newton_div1.png} \hfill
+        \includegraphics[width=0.3\textwidth]{../images/newton_div3.png} \hfill
+        \includegraphics[width=0.3\textwidth]{../images/newton_div100.png}
+        \caption{Newton iterations (1, 3, and 100). Solid colors: convergence to roots. Alternating colors: 2-cycle basins. Boundaries: Julia set.}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Example: Square Roots}
+    Computing $\sqrt{a}$ using $p(x) = x^2 - a$ on $L = \mathbb{R} \setminus \{0\}$.
+    \[
+        N_p(x) = \frac{x^2+a}{2x}
+    \]
+    
+    The sequence of iterates converges pointwise to:
+    \[
+        \mathfrak{f}(x) = \begin{cases} 
+            \sqrt{a} & x > 0 \\
+            -\sqrt{a} & x < 0 \\
+            \infty & x = 0, \infty
+        \end{cases}
+    \]
+    
+    This limit function $\mathfrak{f}$ is in \textbf{Baire Class 1} ($B_1(\mathcal{L})$).
+    \begin{itemize}
+        \item Discontinuous at $0, \infty$.
+        \item Pointwise limit of continuous functions.
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\section{Classifying Deep Computations}
+%------------------------------------------------
+
+\begin{frame}{From Dynamics to Topology}
+    \begin{itemize}
+        \item Deep computations arise as limits.
+        \item If we assume the \textbf{Extendibility Axiom} (computations extend to the type space $\mathcal{L}$), we look at $\overline{\tilde{\Delta}} \subseteq \mathcal{L}^{\mathcal{L}}$.
+    \end{itemize}
+
+    \begin{block}{Rosenthal Compacta}
+        A \textbf{Rosenthal compactum} is a compact subset of the first Baire class $B_1(X)$ (functions that are pointwise limits of continuous functions) on a Polish space $X$.
+    \end{block}
+    
+    \begin{itemize}
+        \item Rosenthal compacta represent "Tame" topology.
+        \item "Wild" topology involves functions not in Baire class 1 (Independence Property).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The Fundamental Theorem}
+    \begin{theorem}[Dueñez, Iovino, Matos-Wiederhold, Salvetti, Tall]
+        Let $\Delta$ be a countable set of computations in a CCS. The following are equivalent:
+        \begin{enumerate}
+            \item The space of deep computations $\overline{\tilde{\Delta}}$ is a subset of $B_1(\mathcal{L})$ (on shards). i.e., It is a \textbf{Rosenthal Compactum}.
+            \item $\Delta$ satisfies the \textbf{NIP} (No Independence Property).
+        \end{enumerate}
+    \end{theorem}
+    
+    \begin{itemize}
+        \item \textbf{NIP}: A combinatorial property from Model Theory preventing "encoding" of arbitrary subgraphs.
+        \item Corollary: NIP implies every deep computation is a \textit{sequential} limit of standard computations.
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\section{Hierarchy of Complexity}
+%------------------------------------------------
+
+\begin{frame}{Todorčević’s Trichotomy}
+    Rosenthal compacta (NIP spaces) are not all equal. We have a strict hierarchy based on topological complexity.
+    
+    \begin{enumerate}
+        \item \textbf{$\text{NIP}_3$ (Metrizable)}:
+        \item \textbf{$\text{NIP}_2$ (Hereditarily Separable)}: 
+        \item \textbf{$\text{NIP}_1$ (First Countable)}: 
+        \item \textbf{NIP (General Rosenthal)}:
+    \end{enumerate}
+    
+    \vspace{0.5cm}
+    Todorčević (1999) proved a trichotomy for separable Rosenthal compacta that helps distinguish these classes.
+\end{frame}
+
+\begin{frame}{Hierarchy of Deep Computations}
+    \begin{center}
+    \begin{tikzpicture}[
+      grow=down,
+      level 1/.style={sibling distance=4cm,level distance=1.5cm},
+      level 2/.style={sibling distance=3cm,level distance=1.5cm},
+      edge from parent/.style={draw,-latex},
+      every node/.style={font=\footnotesize,align=center, draw, rectangle, rounded corners}
+      ]
+    
+    \node {Deep Computations (NIP)}
+      child {node {NIP$_1$ (First Countable)}
+        child {node {NIP$_2$ (Hereditarily Separable)}
+            child {node {NIP$_3$ (Metrizable)}}
+        }
+      };
+    \end{tikzpicture}
+    \end{center}
+    
+    \begin{itemize}
+        \item \textbf{NIP$_3$}: Square Root computation (Metrizable).
+        \item \textbf{NIP$_2$}: Finite Precision Classifiers ($\approx$ Split Cantor Space). Hereditarily separable but not metrizable.
+        \item \textbf{NIP$_1$}: Prefix/Threshold mixtures ($\approx \hat{D}(S(2^\mathbb{N}))$). First countable, not HS.
+        \item \textbf{NIP}: Prefix Tests ($\approx$ Extended Alexandroff). Not first countable.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Minimal Families (The Heptachotomy)}
+    Argyros, Dodos, and Kanellopoulos (2008) refined the classification.
+    
+    \begin{itemize}
+        \item Identified \textbf{7 minimal prototypes} of separable Rosenthal compacta.
+        \item Any non-metrizable separable Rosenthal compactum $K$ contains a copy of one of these 7 prototypes.
+        \item \textbf{Implication}: Any NIP computational system can be approximated by one of these 7 canonical families of discrete deep computations.
+    \end{itemize}
+    
+    \begin{exampleblock}{Prototypes $D_1 - D_7$}
+        Examples include:
+        \begin{itemize}
+            \item $D_1 \to A(2^{\mathbb{N}})$ (Alexandroff compactification)
+            \item $D_3 \to S(2^{\mathbb{N}})$ (Split Cantor)
+        \end{itemize}
+    \end{exampleblock}
 \end{frame}
 
 %------------------------------------------------
 \section{Conclusion}
 %------------------------------------------------
 
-\begin{frame}{Summary \& Future Work}
-    \textbf{Summary:}
-    \begin{itemize}
-        \item Established a correspondence between NIP and Rosenthal Compacta in Deep Learning.
-        \item Classified limits of neural networks into 4 complexity classes.
-    \end{itemize}
+\begin{frame}{Summary}
+    \begin{enumerate}
+        \item We modeled limits of computations as \textbf{Deep Computations} in a \textbf{CCS}.
+        \item \textbf{Model Theory (NIP)} characterizes when these limits are topologically tame (Rosenthal Compacta/Baire Class 1).
+        \item We identified a \textbf{hierarchy of 4 complexity classes} for tame deep computations:
+        \[
+            \text{NIP}_3 \subsetneq \text{NIP}_2 \subsetneq \text{NIP}_1 \subsetneq \text{NIP}
+        \]
+        \item This framework connects dynamical systems (Newton), logic (NIP), and topology (Rosenthal).
+    \end{enumerate}
     
     \vspace{0.5cm}
-    
-    \textbf{Future Directions:}
-    \begin{itemize}
-        \item Exploring randomized versions of NIP.
-        \item Application to specific architectures (Transformers, RNNs).
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Q\&A}
     \centering
-    \Large \textbf{Thank You!}
-    
-    \vspace{1cm}
-    \footnotesize
-    \textit{The University of Texas at San Antonio}
+    \textbf{Thank You!}
 \end{frame}
 
 \end{document}
