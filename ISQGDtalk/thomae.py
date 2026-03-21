@@ -24,7 +24,7 @@ def farey(n):
         a, b = c, d
         c, d = p, q
         farey_seq.append((c, d))
-        
+
     return farey_seq
 
 
@@ -36,7 +36,7 @@ def thomae(n):
     seq = farey(n)
     xs = [a / b for a, b in seq]
     ys = [1 / b for a, b in seq]
-    
+
     plt.figure(figsize=(10, 6))
     plt.plot(xs, ys, marker='o', linestyle='-', markersize=4)
     # plt.title(f'Farey Approximant of Order {n}')
@@ -59,24 +59,24 @@ def thomae_matrix(matrix):
     if rows == 0:
         return
     cols = len(matrix[0])
-    
+
     # squeeze=False ensures axes is always a 2D array
     fig, axes = plt.subplots(rows, cols, figsize=(5 * cols, 5 * rows), squeeze=False)
-    
+
     # Ensure font size matches thomae(n)
     plt.rcParams.update({'font.size': 20})
-        
+
     for i in range(rows):
         for j in range(cols):
             n = matrix[i][j]
             ax = axes[i][j]
-            
+
             seq = farey(n)
             xs = [a / b for a, b in seq]
             ys = [1 / b for a, b in seq]
-            
+
             ax.plot(xs, ys, marker='o', linestyle='-', markersize=4)
-            
+
             # Using the same label style as thomae(n)
             ax.set_xlabel(rf"$\mathbf{{{n}}}$-Farey Approximant")
             ax.set_xlim(0, 1)
@@ -105,15 +105,15 @@ def thomae_animation(nlist):
 
     def update(n):
         ax.clear()
-        
+
         seq = farey(n)
         xs = [a / b for a, b in seq]
         ys = [1 / b for a, b in seq]
-        
+
         ax.plot(xs, ys, marker='o', linestyle='-', markersize=4)
-        
+
         # Stripped of xlabels as requested (looping over nlist, so no xlabel with n)
-        
+
         ax.set_xlim(0, 1)
         ax.set_ylim(0, 1)
         ax.set_xticks([0, 1])
@@ -124,6 +124,5 @@ def thomae_animation(nlist):
     # Using pillow writer is explicitly supported in matplotlib > 3.3
     # If not available, it might fallback or fail, but pillow is widespread.
     ani.save('thomae_animation.gif', writer='pillow', fps=2)
-    
-    plt.close()
 
+    plt.close()
