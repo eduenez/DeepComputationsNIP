@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 
 def farey(n):
     """
@@ -87,3 +88,42 @@ def thomae_matrix(matrix):
     plt.tight_layout()
     plt.savefig('thomae_array.png')
     plt.close()
+
+
+def thomae_animation(nlist):
+    """
+    Creates an animated GIF of Farey approximants for n in nlist.
+    Removes x-labels from the plots.
+    Saves the result to thomae_animation.gif.
+    """
+    if not nlist:
+        return
+
+    # Use the same font size and figure size as thomae(n)
+    plt.rcParams.update({'font.size': 20})
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    def update(n):
+        ax.clear()
+        
+        seq = farey(n)
+        xs = [a / b for a, b in seq]
+        ys = [1 / b for a, b in seq]
+        
+        ax.plot(xs, ys, marker='o', linestyle='-', markersize=4)
+        
+        # Stripped of xlabels as requested (looping over nlist, so no xlabel with n)
+        
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, 1)
+        ax.set_xticks([0, 1])
+        ax.set_yticks([0, 1])
+        ax.grid(True) 
+
+    ani = animation.FuncAnimation(fig, update, frames=nlist, repeat=True)
+    # Using pillow writer is explicitly supported in matplotlib > 3.3
+    # If not available, it might fallback or fail, but pillow is widespread.
+    ani.save('thomae_animation.gif', writer='pillow', fps=2)
+    
+    plt.close()
+
