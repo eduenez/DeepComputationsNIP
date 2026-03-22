@@ -66,6 +66,7 @@
 % 
 % Macro definitions: symbols
 %
+\DeclareMathOperator{\tp}{tp}
 \newcommand{\hatC}{\hat{\mathbb{C}}}
 \newcommand{\Cp}{\mathrm{C}_{\mathrm{p}}}
 \newcommand{\Lshard}{\mathcal{L}_{\mathrm{sh}}}
@@ -165,13 +166,62 @@
  %    \item Provided $V$ is \textbf{finite-dimensional}, of course!
  %    \end{itemize}
  %  \end{itemize}
-  We take \alert{real-valued structures} from model theory as the class of domains $L$ whose compact subsets $K\subseteq L$ are allowable domains for real-valued algorithms.
+  We take \alert{purely relational real-valued structures} from model theory as the class of domains $L$ on which real-valued computations “make sense”.
  %  to achieve two goals:
  % \begin{enumerate}
  % \item $L$ has a realization as a subset of a product~$\mathbb{R}^n$ of finitely many, or~$R^{\mathbb{N}}$ of countably many lines;
  % \item the relative product topology on~$L$ is the 
  % \end{enumerate}
 \end{frame}
+
+\begin{frame}{Real-valued structures and computation states}
+  \begin{definition}[Computation States Structure (CSS)]
+    % Any real function~$P$ on a set $L$ is called a \emph{real predicate on~$L$}.
+    A \emph{Computation states structure with countably many predicates} is of the form
+    \begin{equation*}
+      \underline{L} = \langle L, P_i\rangle_{i\in \mathbb{N}},
+    \end{equation*}
+    where
+    \begin{itemize}
+    \item $L$ is a nonempty topological space;
+    \item $P_i$ is a continuous real function on $L$ (called a \emph{structural predicate}) for each $i\in \mathbb{N}$.,
+    \end{itemize}
+    and such that the following \textbf{\alert{faithful embedding axiom}} is satisfied:
+    \begin{center}
+      \emph{The \emph{type map} $\tp: L\to \mathbb{R}^{\mathbb{N}}: x\mapsto (P_i(x))_{i\in \mathbb{N}}$ is a homeomorphic embedding into the product space~$\mathbb{R}^{\mathbb{N}}$.}
+    \end{center}
+    % The predicates $P_i$ of $\underline{L}$ are called \emph{structural} or \emph{distinguished}.
+  \end{definition}
+ One may identify $L$ with its type image $\tp[L]\subseteq R^{\mathbb{N}}$.
+ \begin{itemize}
+ \item The predicate $P_i$ becomes the projection $x\mapsto x_i$.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Remarks on computation states structures}
+ A CSS $\underline{L}$ carries the \alert{topology of coordinate-wise convergence}.
+ \begin{itemize}
+ \item A sequence/net in~$L$, or filter on~$L$, converges to $x\in L$ iff the pushforward of the sequence/net/filter by $P_i$ converges to $P_i(x)$, for all~$i$.
+ \end{itemize}
+
+ % A CSS is basically a Tychonoff (i.e., completely regular Hausdorff) space~$L$ with an “explicit coordinatization” by countably many real functions generating the topology of~$L$.  Therefore, many spaces of interest in real analysis are CSSs (for instance, any Polish space).
+ % \begin{itemize}
+ % \item The purely relational nature of CSSs does not allow endowing CSSs with operations; only the intrinsic topology on states is explicitly captured.
+ % \end{itemize}
+
+ The model-theoretic (structural) perspective shines light on:
+ \begin{enumerate}
+ \item \alert{Theories}: Relationships between predicate values,
+   \begin{itemize}
+   \item such theories may be at the heart of specific algorithms;
+   \end{itemize}
+ \item \alert{Explicit definability} of specific real functions on the states space,
+   \begin{itemize}
+   \item definability makes precise the intuition that the function admits an algorithm.
+   \end{itemize}
+ \end{enumerate}
+\end{frame}
+
 
 \begin{frame}{Deep Equilibria of Neural Networks}
 \begin{columns}
