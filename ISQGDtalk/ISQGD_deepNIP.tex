@@ -8,6 +8,7 @@
 \usepackage{hyperref}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{mathrsfs}
+\usepackage{stmaryrd}
 
 %----------------------------------------------------------------------------------------
 %	UTSA THEME CONFIGURATION (Preserving from template)
@@ -389,7 +390,14 @@
     Set of (“\alert{Baire-1}”) functions: pointwise limits of continuous $X\to Y$.
     % (\emph{Real}-valued, unless otherwise specified.)
   \end{block}
-
+\vspace{-0.3cm}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.45\textwidth, height=0.6\textheight]{../images/thomae64.png} \hfill
+    \includegraphics[width=0.45\textwidth, height=0.6\textheight]{../images/dirichlet.png}
+    \caption{\footnotesize{\textbf{Left:} Thomae's (“popcorn”) function $x\mapsto\Brack{x=\frac{m}{n}\in \mathbb{Q}}\cdot\frac{1}{n}$ is Baire class 1.
+      \textbf{Right:} Dirichlet's indicator function $\mathbf{1}_{\mathbb{Q}}$ is not Baire-1 (but it is Baire-2).}}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Baire-1 functions \& NIP}
@@ -416,13 +424,13 @@
   \begin{itemize}
   \item \textbf{Todorčević’s Trichotomy} for Rosenthal Compacta (compact subsets of $B_1(X)$) implies \alert{complexity classes} of ultracomputations.
     \begin{itemize}
-    \item Philosophically at least, ultracomputations \emph{not} Baire-1 are \emph{wild}:
+    \item Philosophically at least, ultracomputations \emph{not} Baire-1 are \alert{wild}:
     they cannot be approximated by any algorithm relying solely on floating-point arithmetic over any compactum $K\subseteq L$ witnessing the failure of NIP.
     —i.e., wild/non-Baire-1 ultracomputations are largely incomputable over the entire states space $L$ in any reasonable sense.
     \item A Julia set is an example of a “bad” such compactum.
     \end{itemize}
   \end{itemize}
-  \alert{Remark:}
+  \alert{\textbf{Remark:}}
   Glasner-Megrelishvili’s results parallel some of ours.
   Important technical differences include:
   \begin{itemize}

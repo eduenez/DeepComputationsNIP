@@ -164,3 +164,26 @@ def dirichlet_animation(temperatures, large_n=32):
     ani.save('dirichlet_animation.gif', writer='pillow', fps=2)
 
     plt.close()
+
+def dirichlet():
+    """
+    Plots the Dirichlet function (indicator of rationals).
+    Saves the result to dirichlet.png.
+    """
+    plt.rcParams.update({'font.size': 20})
+    plt.figure(figsize=(10, 6))
+
+    # Plot lines at y=0 and y=1 for x in [0,1]
+    # Using 'tab:blue' (or hex color) to match default matplotlib color if that's what thomae used
+    plt.plot([0, 1], [1, 1], linestyle='-', linewidth=8, color='#1f77b4') 
+    plt.plot([0, 1], [0, 0], linestyle='-', linewidth=8, color='#1f77b4')
+
+    plt.xlabel(r"Dirichlet Function $\mathbf{1}_{\mathbb{Q}}$")
+    plt.xlim(0, 1)
+    plt.ylim(0, 1)
+    plt.xticks([0, 1])
+    plt.yticks([0, 1])
+    # plt.grid(True) # Matching thomae(n) style which seems to lack grid in latest version
+    
+    plt.savefig('dirichlet.png')
+    plt.close()
