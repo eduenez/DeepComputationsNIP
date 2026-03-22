@@ -111,6 +111,81 @@
 %----------------------------------------------------------------------------------------
 \section{Motivation: Limits of Computations}
 
+\begin{frame}{Stone-Weierstrass: A computational theorem?!}
+  \begin{itemize}
+  \item \textbf{Computations} involving real numbers hinge on evaluating certain basic \textbf{continuous} operations (e.g., arithmetic) to within tolerances specified in advance.
+  \item Basic operations are implemented by a \emph{floating-point library}.
+    \begin{itemize}
+    \item \alert{\textbf{Caveat!}} Any floating point library implements a (\emph{digital!}) algorithm which \emph{only} approximates real-valued arithmetic on \emph{bounded} intervals:
+      each library only works on a \alert{specific \textbf{compact} subset of~$\mathbb{R}$}.
+    \end{itemize}
+  \end{itemize}
+  \begin{theorem}[Stone-Weierstrass —a computational view]
+    Given: (\textbf{1})~a continuous map $\alert{f: V\to \mathbb{R}}$ on a \alert{finite-dimensional} real vector space~$V$,  (\textbf{2})~a \alert{compact subset $K\subseteq V$} and (\textbf{3})~\alert{$\varepsilon>0$} arbitrary, there is an algorithm $\alert{\mathbf{A}} = \alert{\mathbf{A}_{f, K, \varepsilon}}$ which $\varepsilon$-uniformly approximates $f$ on~$K$ in the sense that $f(x)$ is $\varepsilon$-approximately evaluated relying only on composition of arithmetic operations, applied to the \alert{coordinates} of~$x$ (in some basis of~$V$), as implemented by some fixed-precision floating-point library.
+  \end{theorem}
+  \footnotesize{\alert{\textbf{Note:}} The \emph{Universal Approximation Theorem} for neural networks is a strengthening of Stone-Weierstrass narrowing the operations the algorithm $\alert{\mathbf{A}}$ is allowed to compose.}
+\end{frame}
+
+\begin{frame}{What does a choice of algorithm depend on?}
+\alert{Take-homes} from last slide:
+\begin{itemize}
+\item An \alert{algorithm} to approximate a function on a vector space~$V$ depends on the choices of:
+  \begin{itemize}
+  \item a \alert{precision $\varepsilon>0$};
+  \item the \alert{compactum $K\subseteq V$} on which the function is to be $\varepsilon$-approximated;
+  \item the \alert{coordinatization of~$V$}.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Lead-in to real-valued structures}
+ There are many circumstances where a function is naturally defined \textbf{only} on some \alert{subset $L\subseteq V$} of a real vector space~$V$.
+ \begin{itemize}
+ \item E.g., $\alert{\log}$ is defined only on \alert{$(0,+\infty)\subseteq\mathbb{R}$}.
+   \begin{itemize}
+   \item We wish to be able to compute such functions!
+   \end{itemize}
+ \end{itemize}
+ The \alert{finite-dimensionality} of~$V$ is rather a \alert{red-herring}:
+  \begin{itemize}
+  \item Even if $V$ is infinite-dimensional, any algorithm $\mathbf{A}$ on compacta~$K\subseteq V$
+    –or perhaps $K\subseteq L$ for a fixed $L\subseteq V$–
+    can only use \alert{finitely many real-valued “features”} of points $x\in V$.
+  \item Such “real features” might perhaps be coordinates —but not necessarily so:
+    \begin{itemize}
+    \item \textbf{Example:} $V$ may carry a norm~$\|\cdot\|$.
+      An algorithm (on some subset of~$V$) may depend on the value of~$\|x\|$;
+      thus, the algorithm might take the \alert{norm as an implicitly known feature} of its input argument rather than as an intermediate quantity to be computed.
+    \end{itemize}
+  \end{itemize}
+ % Another \alert{red herring}, from a certain viewpoint, is the \emph{linear structure} of~$V$.
+ %  \begin{itemize}
+ %  \item So far, the linear structure has only been used to \textbf{coordinatize~$V$} in a continuous fashion.
+ %    \begin{itemize}
+ %    \item Provided $V$ is \textbf{finite-dimensional}, of course!
+ %    \end{itemize}
+ %  \end{itemize}
+  We take \alert{real-valued structures} from model theory as the class of domains $L$ whose compact subsets $K\subseteq L$ are allowable domains for real-valued algorithms.
+ %  to achieve two goals:
+ % \begin{enumerate}
+ % \item $L$ has a realization as a subset of a product~$\mathbb{R}^n$ of finitely many, or~$R^{\mathbb{N}}$ of countably many lines;
+ % \item the relative product topology on~$L$ is the 
+ % \end{enumerate}
+\end{frame}
+
+\begin{frame}{Deep Equilibria of Neural Networks}
+\begin{columns}
+  \begin{column}{0.4\textwidth}
+    \includegraphics[scale=0.09]{../images/deep-equilibrium-labeled}
+  \end{column}
+  \begin{column}{0.6\textwidth}
+    \begin{itemize}
+    \item any map between \alert{finite}-dimensional real vector spaces whose output coordinates are continuous
+    \end{itemize}
+  \end{column}
+\end{columns}
+\end{frame}
+
 \begin{frame}{Deep Computations: Limits of Processes}
     \begin{block}{From Finite to Infinite Depth}
     Modern computational paradigms often involve taking limits of discrete processes:
