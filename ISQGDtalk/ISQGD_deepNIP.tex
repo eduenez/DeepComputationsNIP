@@ -184,27 +184,27 @@
     % Any real function~$P$ on a set $L$ is called a \emph{real predicate on~$L$}.
     A \emph{Computation states structure with countably many predicates} is of the form
     \begin{equation*}
-      \underline{L} = \langle L, P_i\rangle_{i\in \mathbb{N}},
+      \alert{\underline{\mathbf{L}}} = \langle \alert{L}, \alert{P_i}\rangle_{i\in \mathbb{N}},
     \end{equation*}
     where
     \begin{itemize}
-    \item $L$ is a nonempty topological space;
-    \item $P_i$ is a continuous real function on $L$ (called a \emph{structural predicate}) for each $i\in \mathbb{N}$.,
+    \item $\alert{L}$ is a \alert{nonempty topological space};
+    \item $\alert{P_i}$ is a continuous real function on $L$ (called a \emph{structural predicate}) for each $i\in \mathbb{N}$.,
     \end{itemize}
     and such that the following \textbf{\alert{faithful embedding axiom}} is satisfied:
     \begin{center}
-      \emph{The \emph{type map} $\tp: L\to \mathbb{R}^{\mathbb{N}}: x\mapsto (P_i(x))_{i\in \mathbb{N}}$ is a homeomorphic embedding into the product space~$\mathbb{R}^{\mathbb{N}}$.}
+      \emph{The \alert{\textbf{type map}} $\alert{\tp}: L\to \mathbb{R}^{\mathbb{N}}: x\mapsto \alert{\bigl(P_i(x)\bigr)_{i\in \mathbb{N}}}$ is a homeomorphic embedding into the product space~$\mathbb{R}^{\mathbb{N}}$.}
     \end{center}
-    % The predicates $P_i$ of $\underline{L}$ are called \emph{structural} or \emph{distinguished}.
+    % The predicates $P_i$ of $\underline{\mathbf{L}}$ are called \emph{structural} or \emph{distinguished}.
   \end{definition}
- One may identify $L$ with its type image $\tp[L]\subseteq R^{\mathbb{N}}$.
+ One may identify $L$ with its type image \alert{$\tp[L]\subseteq R^{\mathbb{N}}$}.
  \begin{itemize}
  \item The predicate $P_i$ becomes the projection $x\mapsto x_i$.
  \end{itemize}
 \end{frame}
 
 \begin{frame}{Remarks on computation states structures}
- A CSS $\underline{L}$ carries the \alert{topology of coordinate-wise convergence}.
+ A CSS $\underline{\mathbf{L}}$ carries the \alert{topology of coordinate-wise convergence}.
  \begin{itemize}
  \item A sequence/net in~$L$, or filter on~$L$, converges to $x\in L$ iff the pushforward of the sequence/net/filter by $P_i$ converges to $P_i(x)$, for all~$i$.
  \end{itemize}
@@ -232,7 +232,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}{Computability and Definability after Grothendieck}
 %   \begin{theorem}[Alva, \textbf{D}, Iovino, Walton]
-%     For a real function $f$ on a CSS~$\underline{L}$, the following properties are equivalent:
+%     For a real function $f$ on a CSS~$\underline{\mathbf{L}}$, the following properties are equivalent:
 %     \begin{itemize}
 %     \item $f$ is definable, in the sense of first-order real-valued logic, by a scheme of quantifier-free formulas;
 %     \item $f$ is computable (i.e., there is an algorithm to evaluate $f$ to an arbitrary degree of precision on any compactum~$K\subseteq L$);
@@ -257,7 +257,7 @@
       \item A dynamic viewpoint leads to the notion of \alert{Compositional Computations Structure (CCS)}.
         \begin{itemize}
         \item \emph{Simplest CCS:}
-          $(\underline{L}, T)$ where $\underline{L}$ is a CSS and $T: L\to L$ is continuous.
+          $(\underline{\mathbf{L}}, T)$ where $\underline{\mathbf{L}}$ is a CSS and $T: L\to L$ is continuous.
         \end{itemize}
       \end{itemize}
     \end{itemize}
@@ -275,14 +275,14 @@
   \end{column}
   \begin{column}{0.6\textwidth}
     \begin{itemize}
-    \item A \alert{“deep state”} of $(\underline{L}, T)$ is any function~$\tau: L\to L$ arising as pointwise (ultra)limit of maps $T^n$ as $n\to\infty$.
+    \item A \alert{“deep state”} of $(\underline{\mathbf{L}}, T)$ is any function~$\tau: L\to L$ arising as pointwise (ultra)limit of maps $T^n$ as $n\to\infty$.
       \begin{itemize}
       \item Some such deep state $\tau\in L^L$ often arise (only) as \emph{ultra}limits, i.e., as \emph{accumulation points} of $\{T^n\}_{n\in \mathbb{N}}$ in the product topology, called \alert{ultracomputations}.
       \end{itemize}
     \end{itemize}
     \vspace{-0.3cm}
     \begin{theorem}[Alva, \textbf{D}, Iovino, Walton ’24]
-      If $\underline{L}$ is \emph{realcompact} and, for each fixed~$i$, the iterates set $\{P_i\circ T^n\}_{n\in \mathbb{N}}$ is bounded on compacta $K\subseteq L$, then $(\underline{L}, T)$ has \alert{deep equilibria}, i.e., \textbf{idempotent} ultracomputations $\widetilde{T}: L\to L$.
+      If $\underline{\mathbf{L}}$ is \emph{realcompact} and, for each fixed~$i$, the iterates set $\{P_i\circ T^n\}_{n\in \mathbb{N}}$ is bounded on compacta $K\subseteq L$, then $(\underline{\mathbf{L}}, T)$ has \alert{deep equilibria}, i.e., \textbf{idempotent} ultracomputations $\widetilde{T}: L\to L$.
     \end{theorem}
     \textbf{Proof:} Ellis-Numakura Lemma.
   \end{column}
@@ -384,16 +384,19 @@
 %----------------------------------------------------------------------------------------
 \section{Classification of Deep Computations}
 
-\begin{frame}{Baire Class 1 \& NIP}
-  Deep computations arise as limits. But how wild are these limits?
-    
-  \begin{block}{$\textcolor{blue}{\mathrm{B}_1}(X, Y)$: Baire Class 1 functions $X\to Y$}
+\begin{frame}{Baire Class 1}
+    \begin{block}{$\textcolor{blue}{\mathrm{B}_1}(X, Y)$: Baire Class 1 functions $X\to Y$}
     Set of (“\alert{Baire-1}”) functions: pointwise limits of continuous $X\to Y$.
     % (\emph{Real}-valued, unless otherwise specified.)
   \end{block}
 
+\end{frame}
+
+\begin{frame}{Baire-1 functions \& NIP}
+  Deep computations arise as limits. But how wild are these limits?
+
   \begin{theorem}[Fundamental Dichotomy (BFT / NIP)]
-    Let $\Delta\subseteq \Cp(L, L)$ be a set of continuous transformations of a \emph{realcompact} CSS~$\underline{L}$.
+    Let $\Delta\subseteq \Cp(L, L)$ be a set of continuous transformations of a \emph{realcompact} CSS~$\underline{\mathbf{L}}$.
     The following are equivalent:
     \begin{enumerate}
     \item $\overline{\Delta}$ is \alert{relatively compact} in $\mathrm{B}_1(L, L)$ (\alert{\textbf{tameness}}).
