@@ -174,6 +174,11 @@
  % \end{enumerate}
 \end{frame}
 
+%----------------------------------------------------------------------------------------
+%	SECTION 2: COMPUTATION STRUCTURES
+%----------------------------------------------------------------------------------------
+\section{Computation Structures}
+
 \begin{frame}{Real-valued structures and computation states}
   \begin{definition}[Computation States Structure (CSS)]
     % Any real function~$P$ on a set $L$ is called a \emph{real predicate on~$L$}.
@@ -284,27 +289,27 @@
 \end{columns}
 \end{frame}
 
-\begin{frame}{Deep Computations: Limits of Processes}
-    \begin{block}{From Finite to Infinite Depth}
-    Modern computational paradigms often involve taking limits of discrete processes:
-    \begin{itemize}
-        \item \textbf{Deep Learning}: Depth of neural networks $d \to \infty$.
-        \item \textbf{Neural ODEs}: Discretization step $\Delta t \to 0$.
-        \item \textbf{Deep Equilibrium Models}: Fixed points of iterative layers.
-    \end{itemize}
-    \end{block}
+% \begin{frame}{Deep Computations: Limits of Processes}
+%     \begin{block}{From Finite to Infinite Depth}
+%     Modern computational paradigms often involve taking limits of discrete processes:
+%     \begin{itemize}
+%         \item \textbf{Deep Learning}: Depth of neural networks $d \to \infty$.
+%         \item \textbf{Neural ODEs}: Discretization step $\Delta t \to 0$.
+%         \item \textbf{Deep Equilibrium Models}: Fixed points of iterative layers.
+%     \end{itemize}
+%     \end{block}
 
-    \pause
+%     \pause
     
-    \begin{alertblock}{The Fundamental Question}
-    What is the \textbf{logical and topological complexity} of these limit maps (``deep computations'')?
-    \end{alertblock}
+%     \begin{alertblock}{The Fundamental Question}
+%     What is the \textbf{logical and topological complexity} of these limit maps (``deep computations'')?
+%     \end{alertblock}
 
-    \vspace{0.5cm}
-    \begin{center}
-    Are they continuous? Measurable? Approximable?
-    \end{center}
-\end{frame}
+%     \vspace{0.5cm}
+%     \begin{center}
+%     Are they continuous? Measurable? Approximable?
+%     \end{center}
+% \end{frame}
 
 \begin{frame}{The Rosetta Stone}
     Our approach bridges three distinct fields to classify these limits.
@@ -322,81 +327,57 @@
     \end{center}
 \end{frame}
 
-%----------------------------------------------------------------------------------------
-%	SECTION 2: COMPUTATION STRUCTURES
-%----------------------------------------------------------------------------------------
-\section{Computation Structures}
-
-\begin{frame}{Computation States Structures (CSS)}
-    We formalize a computational environment as a pair $(L, \mathcal{P})$:
-    
-    \begin{itemize}
-        \item \textbf{States ($L$)}: The set of all possible memory states of the machine.
-        \item \textbf{Features ($\mathcal{P}$)}: A family of real-valued functions $P: L \to \mathbb{R}$ (observables).
-    \end{itemize}
-
-    \begin{example}[Vector Space]
-        $L = \mathbb{R}^n$, $\mathcal{P} = \{ \text{projections } \pi_1, \dots, \pi_n \}$.
-    \end{example}
-
-    \pause 
-
-    \begin{block}{The Space of Types $\mathcal{L}$}
-     Embed states into feature space: $v \mapsto (P(v))_{P \in \mathcal{P}}$. 
-     The \textbf{Type Space} $\mathcal{L}$ is the topological closure of the image of $L$ in $\mathbb{R}^\mathcal{P}$.
-     \begin{itemize}
-         \item $\mathcal{L}$ captures ``ideal'' or ``limit'' states.
-         \item Topology: Pointwise convergence (product topology).
-     \end{itemize}
-    \end{block}
-\end{frame}
-
-\begin{frame}{Compositional Computation Structures (CCS)}
-    Add dynamics to the structure: $(L, \mathcal{P}, \Gamma)$.
-    
-    \begin{itemize}
-        \item $\Gamma \subseteq L^L$: A semigroup of \textbf{computations} (state transitions).
-        \item Closed under composition and contains identity.
-    \end{itemize}
-    
-    \begin{block}{Deep Computations}
-    The space of all computations $\Gamma$ sits inside the function space $\mathcal{L}^L$ (transforming states to types).
-    
-    \textbf{Deep Computations} $\overline{\Gamma}$ are the topological closure of $\Gamma$.
-    \end{block}
-    
-    \vspace{0.2cm}
-    They represent the ``limit behavior'' (e.g., the map computed by an infinitely deep network).
-\end{frame}
-
 \section{Examples}
 
-\begin{frame}{Example 1: Newton-Raphson Dynamics}
-    \textbf{Task}: Find roots of a polynomial $p(z)$ on the Riemann Sphere $\hatC$.
-    \begin{itemize}
-        \item \textbf{States}: $L = \hatC \cong S^2$.
-        \item \textbf{Features}: Inverse stereographic coordinates $(P_1, P_2, P_3)$.
-        \item \textbf{Computations $\Gamma$}: Iterates of the Newton map $N_p(z) = z - \frac{p(z)}{p'(z)}$.
-    \end{itemize}
+\begin{frame}{CCS Example 1: Newton-Raphson Dynamics}
+  \textbf{Task}: Find roots of a \alert{complex polynomial~$p(z)$.}
+  \begin{itemize}
+  \item \textbf{States}: $L = \hatC \cong S^2$ (compact).
+  \item \textbf{Predicates}: Inverse stereographic coordinates $(P_1, P_2, P_3)$.
+  \item \textbf{Evolution}: Iterates of the \alert{Newton map $N_p(z) = z - \frac{p(z)}{p'(z)}$}.
+  \end{itemize}
 
-    \begin{columns}
-        \column{0.5\textwidth}
-        \textbf{Deep Computations}:
-        Evaluated at a point $z_0$, the sequence $N_p^{(n)}(z_0)$ may:
-        \begin{enumerate}
-            \item Converge to a root (Basins of Attraction).
-            \item Converge to a cycle.
-            \item Behave chaotically (Julia Set).
-        \end{enumerate}
-        
-        \column{0.5\textwidth}
-        \centering
-        \includegraphics[width=0.8\textwidth]{../images/newton_div100.png} % Assuming image exists or placeholder
-        \\ \tiny{Newton Fractal for $z^3-2z+2$}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \textbf{Deep Computations}:
+    % The sequences $\bigl(N_p^{(n)}(z)\bigr)_n$ have local behavior of the forms:
+    % \begin{enumerate}
+    % \item converge to a root (basins of attraction);
+    % \item diverge “nicely” in ;
+    % \item behave chaotically (Julia Set).
+    % \end{enumerate}
+    A \alert{deep computation $\widetilde{T}$} “chooses” one specific \textbf{sub-sequential limit $\widetilde{T}(z_0)$} of $\bigl(N_p^{(n)}(z_0)\bigr)_n$ for each~$z_0$.
+    The limit for \textbf{every}~$z_0$ is \textbf{not} realizable sequentially globally.
+
+    \footnotesize{The Julia set is the fractal boundary of regions of (“good”) local subsequential convergence of~$(N_p^{(n)})_n$.}
+      % consists of $z_0$ \emph{not} having a neighborhood where a subsequence of~$N_p^{(n)}$ converges;
+
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{../images/newton_div100.png} % Assuming image exists or placeholder
+    \\ \footnotesize{Newton Fractal for $z^3-2z+2$}
     \end{columns}
 \end{frame}
 
-\begin{frame}{Example 2: Thomae's Function (The Popcorn Function)}
+\begin{frame}{Visualizing Newton-Raphson Dynamics}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.3\textwidth, height=0.35\textheight]{../images/newton_div1.png} \hfill
+        \includegraphics[width=0.3\textwidth, height=0.35\textheight]{../images/newton_div2.png} \hfill
+        \includegraphics[width=0.3\textwidth, height=0.35\textheight]{../images/newton_div3.png}
+\vfill
+        \includegraphics[width=0.3\textwidth, height=0.35\textheight]{../images/newton_div99.png} \hfill
+        \includegraphics[width=0.3\textwidth, height=0.35\textheight]{../images/newton_div100.png} \hfill
+        \includegraphics[width=0.3\textwidth, height=0.35\textheight]{../images/newton_div101.png}
+        \caption{\footnotesize{Newton iterations ($\mathbf{n} = \mathbf{1}, \mathbf{2}, \mathbf{3}, \mathbf{99}, \mathbf{100}, \mathbf{101}$).
+          \textcolor{red}{Red}/\textcolor{green}{Green}/\textcolor{blue}{Blue}: Convergence to roots.
+          \textcolor{magenta}{Magenta}/\textcolor{cyan}{Cyan}: Limit 2-cycle $\{0,1\}$.
+          Boundaries: Julia (fractal) set.}}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}{Example 2: Thomae's Function (“Popcorn Function”)}
     % Including this as it relates to the user's thomae.py context
     Consider limits of simple rational approximations.
     
