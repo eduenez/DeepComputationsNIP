@@ -52,7 +52,7 @@ def thomae(n):
     xs, ys = farey_scatter(n)
 
     plt.figure(figsize=(10, 6))
-    plt.plot(xs, ys, marker='o', linestyle='-', markersize=4)
+    plt.plot(xs, ys, linestyle='-', markersize=4)  # marker='o',
     # plt.title(f'Farey Approximant of Order {n}')
     plt.xlabel(
         rf"$\mathbf{{{n}}}$-Farey Approximant to Thomae’s function")
@@ -118,7 +118,7 @@ def thomae_animation(nlist):
     def update(n):
         ax.clear()
         xs, ys = farey_scatter(n)
-        ax.plot(xs, ys, marker='o', linestyle='-', markersize=4)
+        ax.plot(xs, ys, linestyle='-', markersize=4)  # marker='o', 
         ax.set_xlim(0, 1)
         ax.set_ylim(0, 1)
         ax.set_xticks([0, 1])
@@ -149,7 +149,7 @@ def dirichlet_animation(temperatures, large_n=32):
     def update(s):
         ax.clear()
         yscaled = [y ** s for y in ys]
-        ax.plot(xs, yscaled, linestyle='-', markersize=4)
+        ax.plot(xs, yscaled, linestyle='-', markersize=4)  # marker='o',
         ax.set_xlim(0, 1)
         ax.set_ylim(0, 1)
         ax.set_xticks([0, 1])
