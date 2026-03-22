@@ -60,6 +60,7 @@ def thomae(n):
     plt.ylim(0, 1)
     plt.xticks([0, 1])
     plt.yticks([0, 1])
+    plt.savefig('thomae.pdf')
     plt.show()
 
 

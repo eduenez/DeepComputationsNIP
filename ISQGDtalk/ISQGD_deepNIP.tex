@@ -230,16 +230,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fix or remove
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Computability and Definability after Grothendieck}
-  \begin{theorem}[Alva, \textbf{D}, Iovino, Walton]
-    For a real function $f$ on a CSS~$\underline{L}$, the following properties are equivalent:
-    \begin{itemize}
-    \item $f$ is definable, in the sense of first-order real-valued logic, by a scheme of quantifier-free formulas;
-    \item $f$ is computable (i.e., there is an algorithm to evaluate $f$ to an arbitrary degree of precision on any compactum~$K\subseteq L$);
-    \item 
-    \end{itemize}
-  \end{theorem}
-\end{frame}
+% \begin{frame}{Computability and Definability after Grothendieck}
+%   \begin{theorem}[Alva, \textbf{D}, Iovino, Walton]
+%     For a real function $f$ on a CSS~$\underline{L}$, the following properties are equivalent:
+%     \begin{itemize}
+%     \item $f$ is definable, in the sense of first-order real-valued logic, by a scheme of quantifier-free formulas;
+%     \item $f$ is computable (i.e., there is an algorithm to evaluate $f$ to an arbitrary degree of precision on any compactum~$K\subseteq L$);
+%     \item 
+%     \end{itemize}
+%   \end{theorem}
+% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -311,25 +311,25 @@
 %     \end{center}
 % \end{frame}
 
-\begin{frame}{The Rosetta Stone}
-    Our approach bridges three distinct fields to classify these limits.
+% \begin{frame}{The Rosetta Stone}
+%     Our approach bridges three distinct fields to classify these limits.
     
-    \begin{center}
-    \begin{tikzpicture}[node distance=3cm, auto, thick]
-        \node[draw=utsaNavy, fill=utsaOrange!20, rounded corners, align=center] (Topo) {\textbf{Topology}\\ Function Spaces \\ ($\Cp$-Theory)};
-        \node[draw=utsaNavy, fill=utsaOrange!20, rounded corners, align=center] (Model) [below left of=Topo] {\textbf{Model Theory}\\ Types \& Stability \\ (Shelah)};
-        \node[draw=utsaNavy, fill=utsaOrange!20, rounded corners, align=center] (Learn) [below right of=Topo] {\textbf{Machine Learning}\\ VC Dimension \\ (Vapnik-Chervonenkis)};
+%     \begin{center}
+%     \begin{tikzpicture}[node distance=3cm, auto, thick]
+%         \node[draw=utsaNavy, fill=utsaOrange!20, rounded corners, align=center] (Topo) {\textbf{Topology}\\ Function Spaces \\ ($\Cp$-Theory)};
+%         \node[draw=utsaNavy, fill=utsaOrange!20, rounded corners, align=center] (Model) [below left of=Topo] {\textbf{Model Theory}\\ Types \& Stability \\ (Shelah)};
+%         \node[draw=utsaNavy, fill=utsaOrange!20, rounded corners, align=center] (Learn) [below right of=Topo] {\textbf{Machine Learning}\\ VC Dimension \\ (Vapnik-Chervonenkis)};
         
-        \draw[<->] (Topo) -- node[left] {Rosenthal Compacta} (Model);
-        \draw[<->] (Topo) -- node[right] {BFT Dichotomy} (Learn);
-        \draw[<->] (Model) -- node[below] {NIP / Independence} (Learn);
-    \end{tikzpicture}
-    \end{center}
-\end{frame}
+%         \draw[<->] (Topo) -- node[left] {Rosenthal Compacta} (Model);
+%         \draw[<->] (Topo) -- node[right] {BFT Dichotomy} (Learn);
+%         \draw[<->] (Model) -- node[below] {NIP / Independence} (Learn);
+%     \end{tikzpicture}
+%     \end{center}
+% \end{frame}
 
 \section{Examples}
 
-\begin{frame}{CCS Example 1: Newton-Raphson Dynamics}
+\begin{frame}{CCS Example: Newton-Raphson Dynamics}
   \textbf{Task}: Find roots of a \alert{complex polynomial~$p(z)$.}
   \begin{itemize}
   \item \textbf{States}: $L = \hatC \cong S^2$ (compact).
@@ -379,58 +379,61 @@
 \end{frame}
 
 
-\begin{frame}{Example 2: Thomae's Function (“Popcorn Function”)}
-    % Including this as it relates to the user's thomae.py context
-    Consider limits of simple rational approximations.
-    
-    \begin{definition}[Thomae-like Limit]
-    Let $f_n(x)$ be related to Farey sequences of order $n$.
-    As $n \to \infty$, we recover Thomae's function:
-    \[
-    f(x) = \begin{cases} 
-      1/q & \text{if } x = p/q \text{ (rational reduced)}\\
-      0 & \text{if } x \text{ is irrational}
-    \end{cases}
-    \]
-    \end{definition}
-    
-    \begin{itemize}
-        \item \textbf{Key Insight}: The limit function is discontinuous at every rational, but continuous at every irrational.
-        \item It belongs to \textbf{Baire Class 1}: Pointwise limits of continuous functions.
-    \end{itemize}
-\end{frame}
-
 %----------------------------------------------------------------------------------------
 %	SECTION 3: CLASSIFICATION
 %----------------------------------------------------------------------------------------
 \section{Classification of Deep Computations}
 
 \begin{frame}{Baire Class 1 \& NIP}
-    Deep computations arise as limits. But how wild are these limits?
+  Deep computations arise as limits. But how wild are these limits?
     
-    \begin{block}{Baire Class 1}
-    Functions $f$ that are pointwise limits of continuous functions.
-    \end{block}
+  \begin{block}{$\textcolor{blue}{\mathrm{B}_1}(X, Y)$: Baire Class 1 functions $X\to Y$}
+    Set of (“\alert{Baire-1}”) functions: pointwise limits of continuous $X\to Y$.
+    % (\emph{Real}-valued, unless otherwise specified.)
+  \end{block}
 
-    \begin{theorem}[Fundamental Dichotomy (BFT / NIP)]
-    Let $\Delta$ be a set of computations. The following are equivalent:
+  \begin{theorem}[Fundamental Dichotomy (BFT / NIP)]
+    Let $\Delta\subseteq \Cp(L, L)$ be a set of continuous transformations of a \emph{realcompact} CSS~$\underline{L}$.
+    The following are equivalent:
     \begin{enumerate}
-        \item The space of deep computations $\overline{\Delta}$ is ``tame'' (relatively compact in Baire Class 1).
-        \item $\Delta$ has the \textbf{No Independence Property (NIP)}.
+    \item $\overline{\Delta}$ is \alert{relatively compact} in $\mathrm{B}_1(L, L)$ (\alert{\textbf{tameness}}).
+    \item $\Delta$ has the \alert{No Independence Property (\textbf{NIP})}.
     \end{enumerate}
-    \end{theorem}
+    If the above conditions hold, then every deep computation $\tau\in \overline{\Delta}$ is the pointwise limit of some sequence in $\overline{\Delta}$ over arbitrary compacta $K\subseteq L$.
+  \end{theorem}
     
-    \textbf{NIP (Intuition)}: The computations cannot ``shatter'' arbitrarily large finite sets of inputs. (Related to finite VC-Dimension).
+  \footnotesize{\textbf{NIP (intuition)}: $\Delta$ cannot not “shatter” arbitrarily large finite sets of inputs.}
+
+  \footnotesize{\emph{Discrete analogue:} Finiteness of \alert{Vapnis-Chervonenkis (VC) dimension}.}
+\end{frame}
+
+\begin{frame}{Ultracomputations: From tame to wild}
+  If a system satisfies NIP, it is tame.
+  But there are \alert{\emph{levels} of tameness}.
+  \begin{itemize}
+  \item \textbf{Todorčević’s Trichotomy} for Rosenthal Compacta (compact subsets of $B_1(X)$) implies \alert{complexity classes} of ultracomputations.
+    \begin{itemize}
+    \item Philosophically at least, ultracomputations \emph{not} Baire-1 are \emph{wild}:
+    they cannot be approximated by any algorithm relying solely on floating-point arithmetic over any compactum $K\subseteq L$ witnessing the failure of NIP.
+    —i.e., wild/non-Baire-1 ultracomputations are largely incomputable over the entire states space $L$ in any reasonable sense.
+    \item A Julia set is an example of a “bad” such compactum.
+    \end{itemize}
+  \end{itemize}
+  \alert{Remark:}
+  Glasner-Megrelishvili’s results parallel some of ours.
+  Important technical differences include:
+  \begin{itemize}
+  \item Our framework applies to functions on the class of states spaces that are Tychonoff;
+    our strongest results assume only realcompactness (rather than compact metrizability).
+  \item We emphasize connections with the theory of real-valued computing.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{The Hierarchy of Tameness}
-    If a system satisfies NIP, it is tame. But there are \emph{levels} of tameness.
-    We use \textbf{Todorčević’s Trichotomy} for Rosenthal Compacta to define complexity classes.
-
-    \begin{center}
+      \begin{center}
     \begin{tikzpicture}[
-      level 1/.style={sibling distance=4cm},
-      level 2/.style={sibling distance=3cm},
+      level 1/.style={sibling distance=5.5cm},
+      level 2/.style={sibling distance=4cm},
       every node/.style={draw, rounded corners, align=center, font=\small}
     ]
       \node {Rosenthal Compacta (NIP)}
@@ -438,7 +441,7 @@
           child {node {Hereditarily Separable \\ ($\text{NIP}_2$)}
              child {node {Split Cantor}}
           }
-          child {node {Not Hered. Separable \\ ($\text{NIP}$ only)}
+          child {node {Not Hereditarily\\ Separable \\ ($\text{NIP}$ only)}
              child {node {Double Arrow}}
           }
         }
@@ -449,14 +452,17 @@
     \end{center}
 
     \begin{itemize}
-        \item $\NIP_3$: Metrizable (Most tame). Limits are unique and well-behaved.
-        \item $\NIP_2$: Hereditarily Separable but not Metrizable.
-        \item $\NIP_1$: First Countable.
+    \item $\NIP_3$: Metrizable (most tame).
+      Limits are unique and well-behaved.
+    \item $\NIP_2$: Hereditarily Separable but not Metrizable.
+    \item $\NIP_1$: First Countable.
     \end{itemize}
+
 \end{frame}
 
 \begin{frame}{The Seven Prototypes (ADK Heptachotomy)}
-    Argyros, Dodos, and Kanellopoulos identified 7 minimal building blocks for these spaces. Any wilder behavior must contain one of these prototypes.
+  Argyros, Dodos, and Kanellopoulos identified \emph{7 minimal building blocks} for Rosenthal compacta.
+  Any wilder behavior must contain one of these prototypes.
     
     \begin{columns}
         \column{0.4\textwidth}
@@ -478,24 +484,24 @@
 %----------------------------------------------------------------------------------------
 %	SECTION 4: PROBABILISTIC VIEW
 %----------------------------------------------------------------------------------------
-\section{Probabilistic Computability}
+% \section{Probabilistic Computability}
 
-\begin{frame}{Monte Carlo Computability}
-    What if we relax "deterministically computable" to "computable with high probability"?
+% \begin{frame}{Monte Carlo Computability}
+%     What if we relax "deterministically computable" to "computable with high probability"?
     
-    \begin{definition}[Universal Monte Carlo Computable]
-    A deep computation $f$ is universally Monte Carlo computable if it is $\mu$-measurable for every Radon probability measure $\mu$.
-    \end{definition}
+%     \begin{definition}[Universal Monte Carlo Computable]
+%     A deep computation $f$ is universally Monte Carlo computable if it is $\mu$-measurable for every Radon probability measure $\mu$.
+%     \end{definition}
 
-    \begin{theorem}
-    If a system satisfies \textbf{NIP}, then every deep computation is universally Monte Carlo computable.
-    \end{theorem}
+%     \begin{theorem}
+%     If a system satisfies \textbf{NIP}, then every deep computation is universally Monte Carlo computable.
+%     \end{theorem}
     
-    \begin{itemize}
-        \item This relates to \textbf{Talagrand Stability}.
-        \item "Wild" computations (IP) might not be measurable (depending on set-theoretic axioms!).
-    \end{itemize}
-\end{frame}
+%     \begin{itemize}
+%         \item This relates to \textbf{Talagrand Stability}.
+%         \item "Wild" computations (IP) might not be measurable (depending on set-theoretic axioms!).
+%     \end{itemize}
+% \end{frame}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 5: CONCLUSION
@@ -503,15 +509,15 @@
 \section{Conclusion}
 
 \begin{frame}{Summary}
-    We have established a framework to classify the complexity of infinite-limit computations.
-    
+    We introduce a framework to classify the complexity of asymptotic/limit real-valued computations.
+
     \vspace{0.5cm}
     
     \begin{table}[]
     \centering
     \begin{tabular}{@{}lll@{}}
     \toprule
-    \textbf{Complexity} & \textbf{Topology (Rosenthal)} & \textbf{NIP Class} \\ \midrule
+    \textbf{Complexity} & \textbf{Rosenthal Topology} & \textbf{NIP Class} \\ \midrule
     Most Tame & Metrizable & $\NIP_3$ \\
     Intermediate & Hereditarily Separable & $\NIP_2$ \\
     Tame & First Countable & $\NIP_1$ \\
@@ -520,12 +526,46 @@
     \end{table}
 
     \vspace{0.2cm}
-    \textbf{Key Takeaway}: NIP is the dividing line between physically/computationally realizable limits (Baire Class 1) and chaotic/unapproximable ones.
+    \textbf{Essential Takeaway}:
+
+    \alert{NIP} is the \alert{dividing line} between \alert{“tame” (Baire-1)} transformations/functions that may be evaluated (up to a small error) \alert{computationally feasibly}, and \alert{unapproximable/wild} ones.
 \end{frame}
 
 \begin{frame}
     \centering
     \Huge Thank You!
+\end{frame}
+
+\begin{frame}{References}
+  \begin{itemize}
+  \item
+  S. Alva, E. Dueñez, J. Iovino, C. Walton.
+  \emph{Approximability of deep equilibria.}
+  {\em arXiv preprint arXiv:2409.06064}, 2024.
+  To appear in \emph{Mathematical Structures in Computer Science}.
+
+\item
+Spiros~A. Argyros, Pandelis Dodos, and Vassilis Kanellopoulos.
+A classification of separable {Rosenthal} compacta and its applications.
+{\em Dissertationes Mathematicae}, 449:1--55, 2008.
+
+\item
+  E. Dueñez, J. Iovino, T. Matos-Wiederhold, L. Salvetti, F. D. Tall.
+  {Complexity of deep computations via topology of function spaces.}
+  {\em arXiv preprint arXiv:2601.00528}, 2026.
+
+\item Eli Glasner and Michael Megrelishvili.
+ {Todorčević'} trichotomy and a hierarchy in the class of tame dynamical systems.
+ {\em Transactions of the American Mathematical Society},
+  375(7):4513--4548, 2022.
+
+\item
+  Stevo Todorčević.
+  Compact subsets of the first {Baire} class.
+  {\em Journal of the American Mathematical Society}, 12(4):1179--1212,
+  1999.
+
+  \end{itemize}
 \end{frame}
 
 \end{document}
