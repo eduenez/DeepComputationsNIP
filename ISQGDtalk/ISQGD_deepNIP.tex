@@ -339,7 +339,7 @@
 
   \begin{columns}
     \column{0.5\textwidth}
-    \textbf{Deep Computations}:
+    \textbf{Deep Computations: \alert{\emph{not} Baire-1!}}
     % The sequences $\bigl(N_p^{(n)}(z)\bigr)_n$ have local behavior of the forms:
     % \begin{enumerate}
     % \item converge to a root (basins of attraction);
@@ -347,9 +347,11 @@
     % \item behave chaotically (Julia Set).
     % \end{enumerate}
     A \alert{deep computation $\widetilde{T}$} “chooses” one specific \textbf{sub-sequential limit $\widetilde{T}(z_0)$} of $\bigl(N_p^{(n)}(z_0)\bigr)_n$ for each~$z_0$.
-    The limit for \textbf{every}~$z_0$ is \textbf{not} realizable sequentially globally.
-
-    \footnotesize{The Julia set is the fractal boundary of regions of (“good”) local subsequential convergence of~$(N_p^{(n)})_n$.}
+    The limit for \textbf{every}~$z_0$ is \textbf{not} realizable sequentially globally:
+    \begin{itemize}
+    \item such $\widetilde{T}$ is \alert{not} the pointwise limit of any subsequence of $(N_p^{(n)})_n$.
+    \end{itemize}
+    % \footnotesize{The Julia set is the fractal boundary of regions of (“good”) local subsequential convergence of~$(N_p^{(n)})_n$.}
       % consists of $z_0$ \emph{not} having a neighborhood where a subsequence of~$N_p^{(n)}$ converges;
 
     \column{0.5\textwidth}
