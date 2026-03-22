@@ -137,9 +137,6 @@
   \item the \alert{coordinatization of~$V$}.
   \end{itemize}
 \end{itemize}
-\end{frame}
-
-\begin{frame}{Lead-in to real-valued structures}
  There are many circumstances where a function is naturally defined \textbf{only} on some \alert{subset $L\subseteq V$} of a real vector space~$V$.
  \begin{itemize}
  \item E.g., $\alert{\log}$ is defined only on \alert{$(0,+\infty)\subseteq\mathbb{R}$}.
@@ -147,6 +144,9 @@
    \item We wish to be able to compute such functions!
    \end{itemize}
  \end{itemize}
+\end{frame}
+
+\begin{frame}{Lead-in to real-valued structures}
  The \alert{finite-dimensionality} of~$V$ is rather a \alert{red-herring}:
   \begin{itemize}
   \item Even if $V$ is infinite-dimensional, any algorithm $\mathbf{A}$ on compacta~$K\subseteq V$
@@ -217,21 +217,69 @@
    \end{itemize}
  \item \alert{Explicit definability} of specific real functions on the states space,
    \begin{itemize}
-   \item definability makes precise the intuition that the function admits an algorithm.
+   \item definability is the model-theoretic notion capturing the existence of algorithms.
    \end{itemize}
  \end{enumerate}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fix or remove
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Computability and Definability after Grothendieck}
+  \begin{theorem}[Alva, \textbf{D}, Iovino, Walton]
+    For a real function $f$ on a CSS~$\underline{L}$, the following properties are equivalent:
+    \begin{itemize}
+    \item $f$ is definable, in the sense of first-order real-valued logic, by a scheme of quantifier-free formulas;
+    \item $f$ is computable (i.e., there is an algorithm to evaluate $f$ to an arbitrary degree of precision on any compactum~$K\subseteq L$);
+    \item 
+    \end{itemize}
+  \end{theorem}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Deep Equilibria of Neural Networks}
 \begin{columns}
   \begin{column}{0.4\textwidth}
-    \includegraphics[scale=0.09]{../images/deep-equilibrium-labeled}
+    \includegraphics[scale=0.085]{../images/deep-equilibrium-labeled}
   \end{column}
   \begin{column}{0.6\textwidth}
     \begin{itemize}
-    \item any map between \alert{finite}-dimensional real vector spaces whose output coordinates are continuous
+    \item A deep (but finite) neural network is an example of a CSS with finitely many predicates.
+    \item An “infinitely deep” neural network is a CSS with countably many predicates.
+      \begin{itemize}
+      \item Such infinitely deep networks are obtained by \textbf{“tying weights”}, i.e., by iterating a fixed map (single-layer transition) \emph{ad infinitum}.
+      \item A dynamic viewpoint leads to the notion of \alert{Compositional Computations Structure (CCS)}.
+        \begin{itemize}
+        \item \emph{Simplest CCS:}
+          $(\underline{L}, T)$ where $\underline{L}$ is a CSS and $T: L\to L$ is continuous.
+        \end{itemize}
+      \end{itemize}
     \end{itemize}
+    % \begin{itemize}
+    % \item any map between \alert{finite}-dimensional real vector spaces whose output coordinates are continuous
+    % \end{itemize}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Deep Equilibria of Neural Networks}
+\begin{columns}
+  \begin{column}{0.4\textwidth}
+    \includegraphics[scale=0.085]{../images/deep-equilibrium-labeled}
+  \end{column}
+  \begin{column}{0.6\textwidth}
+    \begin{itemize}
+    \item A \alert{“deep state”} of $(\underline{L}, T)$ is any function~$\tau: L\to L$ arising as pointwise (ultra)limit of maps $T^n$ as $n\to\infty$.
+      \begin{itemize}
+      \item Some such deep state $\tau\in L^L$ often arise (only) as \emph{ultra}limits, i.e., as \emph{accumulation points} of $\{T^n\}_{n\in \mathbb{N}}$ in the product topology, called \alert{ultracomputations}.
+      \end{itemize}
+    \end{itemize}
+    \vspace{-0.3cm}
+    \begin{theorem}[Alva, \textbf{D}, Iovino, Walton ’24]
+      If $\underline{L}$ is \emph{realcompact} and, for each fixed~$i$, the iterates set $\{P_i\circ T^n\}_{n\in \mathbb{N}}$ is bounded on compacta $K\subseteq L$, then $(\underline{L}, T)$ has \alert{deep equilibria}, i.e., \textbf{idempotent} ultracomputations $\widetilde{T}: L\to L$.
+    \end{theorem}
+    \textbf{Proof:} Ellis-Numakura Lemma.
   \end{column}
 \end{columns}
 \end{frame}
