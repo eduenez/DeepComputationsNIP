@@ -337,3 +337,8 @@ tools/video_renders/
 # Backup files
 *~
 \#*
+
+# Build / OS / editor artifacts
+~$*
+auto/
+_region_.*
